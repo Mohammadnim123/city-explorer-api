@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 3111;
 const moviesHandler = require('./modules/movies')
-
+const yelpHandler = require('./modules/yelp')
 
 
 app.get('/', (req, res) => {
@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 app.get('/weatherr', weatherHandlerr)
 app.get('/weather', weatherHandler)
 app.get('/movies', moviesHandler)
+app.get('/yelp', yelpHandler)
 
 function weatherHandlerr(req, res) {
     res.send(weather)
@@ -26,11 +27,14 @@ function weatherHandlerr(req, res) {
 
 function weatherHandler(req, res) {
     let { lat, lon } = req.query
-    console.log(lat,lon);
+    try{
     getWeather(lat,lon).then(result =>{
         res.send(result)
     })
-
+}
+catch{
+    res.send(getWeather(lat,lon))
+}
 
 }
 
