@@ -21,7 +21,7 @@ function yelpHandler(req,res){
 
         res.send(yelpData);
       }).catch((error) => {
-        console.log(error);
+        res.send([])
       });
 }
 
