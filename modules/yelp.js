@@ -6,7 +6,7 @@ function yelpHandler(req,res){
     const searchRequest = {
         
         location: searchQuery,
-        limit: 4,
+        limit: 3,
         offset: ((page - 1) * 4 + 1)
 
       };

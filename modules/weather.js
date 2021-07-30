@@ -21,6 +21,10 @@ function getWeather(lat, lon) {
             weatherStorage[`${lat},${lon}`] = newForcast
             return newForcast
             
+        }).catch((error)=>{
+
+        return error;
+
         })
     }
 }
